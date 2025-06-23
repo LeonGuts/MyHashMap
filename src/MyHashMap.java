@@ -1,6 +1,15 @@
-class MyHashMap<K, V> {
+public class MyHashMap<K, V> {
 
-    static class Entry<K, V> {
+    private Entry<K, V>[] bucketsTable;
+    private int eQuantity; // кол-во элементов
+    private static final int DEFAULT_CAPACITY = 16;
+
+    public MyHashMap() {
+        this.bucketsTable = new Entry[DEFAULT_CAPACITY];
+        this.eQuantity = 0;
+    }
+
+    private static class Entry<K, V> {
         K key;
         V value;
         Entry<K, V> next;
@@ -12,14 +21,11 @@ class MyHashMap<K, V> {
         }
     }
 
-    private Entry<K, V>[] bucketsTable;
-    private int eQuantity = 0; // кол-во элементов
-    private static final int DEFAULT_CAPACITY = 16;
+
 
     private int bucketNum(K key) { // Вычисляем хеш-код ключа(номер бакета)
         int hash = key == null ? 0 : key.hashCode();
-        int index = Math.abs(hash % bucketsTable.length);
-        return index;
+        return Math.abs(hash % bucketsTable.length);
     }
 
 
