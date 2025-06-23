@@ -1,20 +1,20 @@
-public class Entry<Key, Value> {
+public class Entry<K, V> {
 
-    private final Key key;
-    private Value value;
-    private Entry<Key, Value> next;
+    private final K key;
+    private V value;
+    private Entry<K, V> next; // проверяю, есть ли следующий элемент
 
-    public Entry(Key key, Value value, Entry<Key, Value> next) {
+    public Entry(K key, V value, Entry<K, V> next) {
         this.key = key;
         this.value = value;
         this.next = next;
     }
 
-    public Key getKey() {
+    public K getKey() {
         return key;
     }
 
-    public Value getValue() {
+    public V getValue() {
         return value;
     }
 
